@@ -228,15 +228,15 @@ def build_pdf():
     story.append(rqs)
     story.append(spacer(8))
 
-    story.append(heading("1.4 Hipóteses Informais", 2))
+    story.append(heading("1.4 Hipóteses", 2))
     hipoteses = [
-        "<b>H1 (RQ01):</b> Sistemas populares tendem a ser <b>maduros</b>, com vários anos de existência.",
-        "<b>H2 (RQ02):</b> Sistemas populares recebem <b>muita contribuição externa</b> (alto nº de PRs aceitas).",
-        "<b>H3 (RQ03):</b> Sistemas populares lançam releases com <b>frequência moderada</b>.",
-        "<b>H4 (RQ04):</b> Sistemas populares são atualizados <b>com muita frequência</b>, possivelmente diariamente.",
-        "<b>H5 (RQ05):</b> A maioria dos sistemas populares é escrita nas <b>linguagens mais populares</b> (TypeScript, Python, JavaScript).",
-        "<b>H6 (RQ06):</b> Sistemas populares possuem <b>alto percentual de issues fechadas</b> (acima de 70%).",
-        "<b>H7 (RQ07):</b> Sistemas em linguagens mais populares recebem <b>mais contribuições, releases e atualizações</b>.",
+        "<b>H1 (RQ01):</b> A mediana de idade dos repositórios populares é de <b>pelo menos 5 anos</b> (1.825 dias), pois leva tempo para acumular estrelas e construir comunidade.",
+        "<b>H2 (RQ02):</b> A mediana de PRs aceitas dos repositórios populares é de <b>pelo menos 500</b>, já que a alta visibilidade atrai colaboradores.",
+        "<b>H3 (RQ03):</b> A mediana de releases dos repositórios populares é de <b>pelo menos 20</b>, mantendo o projeto ativo e organizado.",
+        "<b>H4 (RQ04):</b> A mediana de dias desde a última atualização dos repositórios populares é de <b>no máximo 1 dia</b>, indicando manutenção praticamente diária.",
+        "<b>H5 (RQ05):</b> <b>Mais de 50%</b> dos repositórios populares (com linguagem definida) são escritos nas linguagens mais populares (TypeScript, Python, JavaScript).",
+        "<b>H6 (RQ06):</b> A mediana da razão de issues fechadas dos repositórios populares é <b>acima de 70%</b>, indicando manutenção ativa e responsiva.",
+        "<b>H7 (RQ07):</b> Sistemas em linguagens do Top 3 Octoverse apresentam <b>mediana de PRs aceitas e releases pelo menos 20% superior</b> ao grupo de outras linguagens.",
     ]
     for h in hipoteses:
         story.append(bullet(h))
@@ -438,13 +438,15 @@ def build_pdf():
             "A mediana de <b>743 PRs aceitas</b> indica contribuição externa significativa, embora a "
             "distribuição seja extremamente assimétrica (média de 3954, desvio padrão de 9869). "
             "<b>Hipótese confirmada:</b> a visibilidade de fato atrai colaboradores, mas a intensidade "
-            "varia muito."
+            "varia muito — alguns projetos recebem dezenas de milhares de PRs, enquanto outros "
+            "(tipicamente listas curadas) recebem poucas."
         ),
         (
             "<b>RQ03 — Releases:</b>",
             "A mediana de <b>40 releases</b> sugere adoção moderada de releases formais, com 29,0% dos "
             "repositórios sem nenhuma release. <b>Hipótese parcialmente confirmada:</b> muitos projetos "
-            "populares não utilizam o sistema de releases do GitHub."
+            "populares (especialmente listas curadas, recursos educacionais e bibliotecas que usam "
+            "distribuição via gerenciadores de pacotes) não utilizam o sistema de releases do GitHub."
         ),
         (
             "<b>RQ04 — Atualização:</b>",
@@ -456,20 +458,22 @@ def build_pdf():
             "<b>RQ05 — Linguagens:</b>",
             "<b>52,6%</b> dos repositórios com linguagem definida usam TypeScript, Python ou JavaScript. "
             "Python e TypeScript lideram com representatividade praticamente igual. <b>Hipótese "
-            "confirmada.</b>"
+            "confirmada:</b> a maioria dos repositórios populares é escrita nas linguagens mais "
+            "populares do ecossistema."
         ),
         (
             "<b>RQ06 — Issues fechadas:</b>",
             "A mediana da razão de issues fechadas é <b>0,8676 (86,8%)</b>, com 73,1% dos repositórios "
             "acima de 70%. <b>Hipótese confirmada:</b> a maioria dos projetos populares mantém uma taxa "
-            "elevada de resolução de issues."
+            "elevada de resolução de issues, indicando manutenção ativa e responsiva."
         ),
         (
             "<b>RQ07 — Linguagens populares vs. outras:</b>",
-            "Repositórios em linguagens do Top 3 Octoverse apresentam medianas superiores em PRs aceitas "
-            "e em releases. O teste de Mann-Whitney U indica significância estatística apenas para "
-            "releases (p = 0,013). Ambos os grupos apresentam mediana de 0 dias desde o último update. "
-            "<b>Hipótese parcialmente confirmada.</b>"
+            "Repositórios em linguagens do <b>Top 3 Octoverse</b> apresentam medianas superiores tanto em PRs aceitas "
+            "quanto em releases. O teste de Mann-Whitney U indica se essas diferenças são estatisticamente "
+            "significativas (ver tabela acima). Ambos os grupos apresentam mediana de 0 dias desde o último update. "
+            "<b>Hipótese parcialmente confirmada:</b> linguagens populares correlacionam com mais atividade "
+            "colaborativa, mas a frequência de atualização é uniformemente alta."
         ),
     ]
     for title, text in rq_discussions:
@@ -484,7 +488,8 @@ def build_pdf():
         "<b>Distribuições long-tail</b> — PRs, releases e issues apresentam distribuições extremamente "
         "assimétricas. A mediana é muito mais representativa que a média.",
         "<b>Listas curadas são um fenômeno</b> — os 96 repositórios sem linguagem definida são quase "
-        "todos \"awesome lists\" e recursos educacionais.",
+        "todos \"awesome lists\" e recursos educacionais, indicando que conteúdo curado é tão valorizado "
+        "quanto software.",
         "<b>Atualização quase em tempo real</b> — 98,0% dos repositórios foram atualizados no mesmo "
         "dia da coleta.",
         "<b>A API limita releases a 1000</b> — 17 repositórios atingiram o limite da API GraphQL, "
@@ -544,7 +549,7 @@ def build_pdf():
         "Investigar a correlação entre <b>número de contribuidores únicos</b> e popularidade.",
         "Analisar o impacto de <b>licenças open-source</b> na popularidade.",
         "Estratificar a amostra por <b>domínio</b> (web, data science, DevOps, mobile, etc.).",
-        "Incluir métricas de <b>qualidade de código</b> (cobertura de testes, CI/CD).",
+        "Incluir métricas de <b>qualidade de código</b> (cobertura de testes, CI/CD) para complementar a análise.",
     ]
     for s in sugestoes:
         story.append(bullet(s))
