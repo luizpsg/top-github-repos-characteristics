@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python gerar_pdf.py)",
+      "Bash(python -c \":*)"
+    ]
+  }
+}
