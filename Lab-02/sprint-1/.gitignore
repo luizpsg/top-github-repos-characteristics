@@ -1,0 +1,11 @@
+# Repos clonados (muito grandes para git)
+data/repos_clonados/
+
+# CK JAR (15 MB, baixar via script)
+tools/
+
+# CK raw output por repo (grandes)
+data/ck_results/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
