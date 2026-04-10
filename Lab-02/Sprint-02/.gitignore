@@ -1,0 +1,17 @@
+# Repos clonados (muito grandes para git)
+data/repos_clonados/
+
+# CK JAR (15 MB, baixar via script)
+tools/
+
+# CK raw output por repo (grandes)
+data/ck_results/
+
+# Arquivo de progresso (usado para resume)
+data/progresso.json
+
+# Log de erros
+data/erros.log
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
